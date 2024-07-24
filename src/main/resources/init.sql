@@ -1,0 +1,1 @@
+insert into account values ('100', '200', '300')
