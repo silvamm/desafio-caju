@@ -15,11 +15,11 @@ public class Account {
         this.cashBalance = cashBalance;
     }
 
-    public TransactionStatus execute(CreditCardTransaction transaction) {
+    public TransactionStatus execute(Transaction transaction) {
         if (!this.id.equals(transaction.getAccountId()))
             return TransactionStatus.TRANSACTION_PROBLEM;
 
-        return switch (transaction.getMcc()){
+        return switch (transaction.getMccType()){
             case FOOD -> reduceFoodBalance(transaction.getAmount());
             case MEAL -> reduceMealBalance(transaction.getAmount());
             case CASH -> reduceCashBalance(transaction.getAmount());

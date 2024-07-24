@@ -23,4 +23,11 @@ public enum MccType {
         return CASH;
     }
 
+    public List<String> getCodes() {
+        return codes;
+    }
+
+    public String getFirstCodeIfExist() {
+        return codes.isEmpty() ? "" : codes.get(0);
+    }
 }

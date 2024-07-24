@@ -1,21 +1,29 @@
 package com.caju.desafio.domain;
 
 import java.math.BigDecimal;
+import java.util.Map;
 import java.util.UUID;
 
-public class CreditCardTransaction {
+public class Transaction {
 
     private final String id = UUID.randomUUID().toString();
     private final Long accountId;
     private final BigDecimal amount;
     private final String merchant;
-    private final MccType mcc;
+    private String mcc;
 
-    public CreditCardTransaction(Long accountId, BigDecimal amount, String merchant, MccType mcc) {
+    public Transaction(Long accountId, BigDecimal amount, String merchant, String mcc) {
         this.accountId = accountId;
         this.amount = amount;
         this.merchant = merchant;
         this.mcc = mcc;
+    }
+
+    public void overrideMccByMerchants(Map<String, String> merchantNameMccMap){
+        var mcc = merchantNameMccMap.get(getMerchant());
+        if(merchant != null){
+            this.mcc = mcc;
+        }
     }
 
     public String getId() {
@@ -34,7 +42,11 @@ public class CreditCardTransaction {
         return merchant;
     }
 
-    public MccType getMcc() {
+    public String getMcc() {
         return mcc;
+    }
+
+    public MccType getMccType(){
+        return MccType.findByCode(mcc);
     }
 }

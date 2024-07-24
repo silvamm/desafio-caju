@@ -11,7 +11,7 @@ public class AccountTest {
     @Test
     void shouldNotReduceAnyBalanceIfIdIsNotEqualWithTransaction(){
         var account = new Account(1L, BigDecimal.TEN, BigDecimal.TEN, BigDecimal.TEN);
-        var transaction = new CreditCardTransaction(100L, BigDecimal.ONE, "SAO PAULO", MccType.FOOD);
+        var transaction = new Transaction(100L, BigDecimal.ONE, "SAO PAULO", MccType.FOOD.getFirstCodeIfExist());
 
         var transactionStatus = account.execute(transaction);
 
@@ -20,7 +20,7 @@ public class AccountTest {
     @Test
     void shouldReduceFoodBalance(){
         var account = new Account(1L, BigDecimal.TEN, BigDecimal.TEN, BigDecimal.TEN);
-        var transaction = new CreditCardTransaction(account.getId(), BigDecimal.ONE, "SAO PAULO", MccType.FOOD);
+        var transaction = new Transaction(account.getId(), BigDecimal.ONE, "SAO PAULO", MccType.FOOD.getFirstCodeIfExist());
 
         var transactionStatus = account.execute(transaction);
 
@@ -31,7 +31,7 @@ public class AccountTest {
     @Test
     void shouldNotReduceFoodBalance(){
         var account = new Account(1L, BigDecimal.TEN, BigDecimal.TEN, BigDecimal.TEN);
-        var transaction = new CreditCardTransaction(account.getId(), BigDecimal.valueOf(11), "SAO PAULO", MccType.FOOD);
+        var transaction = new Transaction(account.getId(), BigDecimal.valueOf(11), "SAO PAULO", MccType.FOOD.getFirstCodeIfExist());
 
         var transactionStatus = account.execute(transaction);
 
@@ -42,7 +42,7 @@ public class AccountTest {
     @Test
     void shouldReduceMealBalance(){
         var account = new Account(1L, BigDecimal.TEN, BigDecimal.TEN, BigDecimal.TEN);
-        var transaction = new CreditCardTransaction(account.getId(), BigDecimal.ONE, "SAO PAULO", MccType.MEAL);
+        var transaction = new Transaction(account.getId(), BigDecimal.ONE, "SAO PAULO", MccType.MEAL.getFirstCodeIfExist());
 
         var transactionStatus = account.execute(transaction);
 
@@ -53,7 +53,7 @@ public class AccountTest {
     @Test
     void shouldNotReduceMealBalance(){
         var account = new Account(1L, BigDecimal.TEN, BigDecimal.TEN, BigDecimal.TEN);
-        var transaction = new CreditCardTransaction(account.getId(), BigDecimal.valueOf(11), "SAO PAULO", MccType.MEAL);
+        var transaction = new Transaction(account.getId(), BigDecimal.valueOf(11), "SAO PAULO", MccType.MEAL.getFirstCodeIfExist());
 
         var transactionStatus = account.execute(transaction);
 
@@ -64,7 +64,7 @@ public class AccountTest {
     @Test
     void shouldReduceCashBalance(){
         var account = new Account(1L, BigDecimal.TEN, BigDecimal.TEN, BigDecimal.TEN);
-        var transaction = new CreditCardTransaction(account.getId(), BigDecimal.ONE, "SAO PAULO", MccType.CASH);
+        var transaction = new Transaction(account.getId(), BigDecimal.ONE, "SAO PAULO", MccType.CASH.getFirstCodeIfExist());
 
         var transactionStatus = account.execute(transaction);
 
@@ -75,7 +75,7 @@ public class AccountTest {
     @Test
     void shouldNotReduceCashBalance(){
         var account = new Account(1L, BigDecimal.TEN, BigDecimal.TEN, BigDecimal.TEN);
-        var transaction = new CreditCardTransaction(account.getId(), BigDecimal.valueOf(11), "SAO PAULO", MccType.CASH);
+        var transaction = new Transaction(account.getId(), BigDecimal.valueOf(11), "SAO PAULO", MccType.CASH.getFirstCodeIfExist());
 
         var transactionStatus = account.execute(transaction);
 
@@ -86,7 +86,7 @@ public class AccountTest {
     @Test
     void shouldReduceCashBalanceInsteadFoodBalance(){
         var account = new Account(1L, BigDecimal.TEN, BigDecimal.TEN, BigDecimal.valueOf(11));
-        var transaction = new CreditCardTransaction(account.getId(), BigDecimal.valueOf(11), "SAO PAULO", MccType.FOOD);
+        var transaction = new Transaction(account.getId(), BigDecimal.valueOf(11), "SAO PAULO", MccType.FOOD.getFirstCodeIfExist());
 
         var transactionStatus = account.execute(transaction);
 
@@ -98,7 +98,7 @@ public class AccountTest {
     @Test
     void shouldReduceCashBalanceInsteadMealBalance(){
         var account = new Account(1L, BigDecimal.TEN, BigDecimal.TEN, BigDecimal.valueOf(11));
-        var transaction = new CreditCardTransaction(account.getId(), BigDecimal.valueOf(11), "SAO PAULO", MccType.MEAL);
+        var transaction = new Transaction(account.getId(), BigDecimal.valueOf(11), "SAO PAULO", MccType.MEAL.getFirstCodeIfExist());
 
         var transactionStatus = account.execute(transaction);
 
