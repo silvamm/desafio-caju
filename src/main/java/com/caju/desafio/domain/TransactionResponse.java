@@ -1,10 +1,10 @@
 package com.caju.desafio.domain;
 
-public class AuthorizationResponse {
+public class TransactionResponse {
 
     private final String code;
 
-    public AuthorizationResponse(TransactionStatus status){
+    public TransactionResponse(TransactionStatus status){
         this.code = status.getCode();
     }
 
