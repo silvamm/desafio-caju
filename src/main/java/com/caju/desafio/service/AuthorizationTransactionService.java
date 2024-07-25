@@ -7,6 +7,8 @@ import com.caju.desafio.domain.TransactionService;
 import com.caju.desafio.domain.Transaction;
 import com.caju.desafio.mapper.AccountMapper;
 import com.caju.desafio.mapper.TransactionMapper;
+import jakarta.persistence.LockModeType;
+import org.springframework.data.jpa.repository.Lock;
 import org.springframework.stereotype.Service;
 
 import static com.caju.desafio.domain.TransactionStatus.APPROVED;
