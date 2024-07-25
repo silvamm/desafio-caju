@@ -20,10 +20,10 @@ public class Transaction {
     }
 
     public void overrideMccByMerchants(Map<String, String> merchantNameMccMap){
-        var mcc = merchantNameMccMap.get(getMerchant());
-        if(merchant != null){
-            this.mcc = mcc;
-        }
+        var foundMcc = merchantNameMccMap.get(getMerchant());
+        if(foundMcc != null)
+            this.mcc = foundMcc;
+
     }
 
     public String getId() {
