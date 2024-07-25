@@ -23,15 +23,31 @@ public class AccountEntity {
         return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public BigDecimal getFoodBalance() {
         return foodBalance;
+    }
+
+    public void setFoodBalance(BigDecimal foodBalance) {
+        this.foodBalance = foodBalance;
     }
 
     public BigDecimal getMealBalance() {
         return mealBalance;
     }
 
+    public void setMealBalance(BigDecimal mealBalance) {
+        this.mealBalance = mealBalance;
+    }
+
     public BigDecimal getCashBalance() {
         return cashBalance;
+    }
+
+    public void setCashBalance(BigDecimal cashBalance) {
+        this.cashBalance = cashBalance;
     }
 }
