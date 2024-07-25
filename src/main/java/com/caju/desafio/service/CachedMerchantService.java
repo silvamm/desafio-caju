@@ -1,20 +1,20 @@
 package com.caju.desafio.service;
 
+import com.caju.desafio.dataprovider.entity.MerchantEntity;
 import com.caju.desafio.dataprovider.repository.MerchantRepository;
 import com.caju.desafio.domain.MerchantService;
-import com.caju.desafio.mapper.MerchantMapper;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class CachedMerchantService implements MerchantService {
 
     private final MerchantRepository merchantRepository;
 
-    public CachedMerchantService(MerchantRepository merchantRepository, MerchantMapper merchantMapper) {
+    public CachedMerchantService(MerchantRepository merchantRepository) {
         this.merchantRepository = merchantRepository;
     }
 
@@ -23,6 +23,6 @@ public class CachedMerchantService implements MerchantService {
     public Map<String, String> getNameMccMap() {
         return merchantRepository.findAll()
                 .stream()
-                .collect(HashMap::new, (map, merchant) -> map.put(merchant.getName(), merchant.getMcc()), HashMap::putAll);
+                .collect(Collectors.toMap(MerchantEntity::getName, MerchantEntity::getMcc));
     }
 }
