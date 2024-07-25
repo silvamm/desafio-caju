@@ -19,6 +19,16 @@ public class AccountEntity {
     @Column(nullable = false)
     private BigDecimal cashBalance;
 
+    public AccountEntity() {
+    }
+
+    public AccountEntity(Long id, BigDecimal foodBalance, BigDecimal mealBalance, BigDecimal cashBalance) {
+        this.id = id;
+        this.foodBalance = foodBalance;
+        this.mealBalance = mealBalance;
+        this.cashBalance = cashBalance;
+    }
+
     public Long getId() {
         return id;
     }

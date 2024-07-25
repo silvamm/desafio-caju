@@ -7,7 +7,7 @@ import org.mapstruct.Mapper;
 @Mapper(componentModel = "spring")
 public interface AccountMapper {
 
-    AccountEntity ToEntity(Account account);
+    AccountEntity toEntity(Account account);
 
     Account toDomain(AccountEntity entity);
 }

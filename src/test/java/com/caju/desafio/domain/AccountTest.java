@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class AccountTest {
 
     @Test
-    void shouldNotReduceAnyBalanceIfIdIsNotEqualWithTransaction(){
+    void shouldNotReduceAnyBalanceIfAccountIdIsNotEqualWithTransaction(){
         var account = new Account(1L, BigDecimal.TEN, BigDecimal.TEN, BigDecimal.TEN);
         var transaction = new Transaction(100L, BigDecimal.ONE, "SAO PAULO", MccType.FOOD.getFirstCodeIfExist());
 
