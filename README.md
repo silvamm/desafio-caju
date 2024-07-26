@@ -48,6 +48,26 @@
 │   │   └───resources
 │   │           application.properties
 │   │           data.sql
+│   │
+│   └───test
+│       └───java
+│           └───com
+│               └───caju
+│                   └───desafio
+│                       │   DesafioApplicationTests.java
+│                       │
+│                       ├───controller
+│                       │       AuthorizationTransactionControllerTest.java
+│                       │
+│                       ├───domain
+│                       │       AccountTest.java
+│                       │       MccTypeTest.java
+│                       │       TransactionResponseTest.java
+│                       │       TransactionTest.java
+│                       │
+│                       └───service
+│                               AuthorizationTransactionServiceTest.java
+│                               CachedMerchantServiceTest.java
 ```
 
 ## Como usar
