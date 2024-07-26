@@ -12,6 +12,15 @@ public class MerchantEntity {
     private String name;
     private String mcc;
 
+    public MerchantEntity() {
+    }
+
+    public MerchantEntity(Long id, String name, String mcc) {
+        this.id = id;
+        this.name = name;
+        this.mcc = mcc;
+    }
+
     public Long getId() {
         return id;
     }
